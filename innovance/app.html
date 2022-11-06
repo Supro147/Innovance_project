@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Style the body */
+        body {
+          font-family: Arial;
+          margin: 0;
+        }
+        
+        /* Header/Logo Title */
+        .header {
+          padding: 26px;
+          text-align: center;
+          background: #35bc1a;
+          color: white;
+          font-size: 30px;
+        }
+        
+        /* Page Content */
+        .content {padding:20px;}
+        .post{
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    margin-top: 40px;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+.info{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.info .username{
+    /* width: auto; */
+    font-weight: bold;
+    color: #000;
+    font-size: 30px;
+    text-align: center;
+    
+    
+  /* margin: left 50px;
+  margin-right: 100px; */
+}
+
+.info .options{
+    height: 10px;
+    cursor: pointer;
+}
+
+.info .user{
+    display: flex;
+    align-items: center;
+}
+
+/* .info .profile-pic{
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    background: none;
+} */
+
+.profile-pic img{
+    height: 150px;
+    width: 150px;
+    /* margin-right: 1600px; */
+    
+    
+    /* border: none; */
+}
+
+.post-image{
+    width: 100%;
+    height: 350px;
+    width:350px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+    text-align: center;
+    object-fit: cover;
+}
+
+.post-content{
+    width: 100%;
+    padding: 20px;
+}
+
+.likes{
+    font-weight: bold;
+}
+
+.description{
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.description span{
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.post-time{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.comment-wrapper{
+    width: 100%;
+    height: 50px;
+    border-radius: 1px solid #dfdfdf;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-wrapper .icon{
+    height: 30px;
+}
+
+.comment-box{
+    width: 80%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.comment-btn,
+.action-btn{
+    width: 70px;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    color: rgb(0, 162, 255);
+    opacity: 0.5;
+}
+
+.reaction-wrapper{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    margin-top: -20px;
+    align-items: center;
+}
+
+.reaction-wrapper .icon{
+    height: 35px;
+    margin: 0;
+    margin-right: 20px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reaction-wrapper .icon.save{
+    margin-left: auto;
+}
+
+
+
+
+        </style>
+    
+</head>
+<body>
+
+    <div class="header">
+        <div class="profile-pic"><img src="kiit.jpg" alt=""></div>
+        
+      <h1>Innovance</h1>
+      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;text-align: left;" >Login</button>
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw"><a href="#">Forgot password?</a></span>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+      
+    </div>
+    
+    
+    <section class="main">
+    <div class="wrapper">
+        <div class="left-col">
+            
+
+            <div class="post">
+                <div class="info">
+                    <div class="user">
+                        
+                        <h1 class="username">VIRAT KOHLI-CRICKETER</h1>
+                    </div>
+                    <!-- <img src="img/option.PNG" class="options" alt=""> -->
+                </div>
+                <img src="Virat_Kohli.png" class="post-image" alt="">
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <img src="like.jpg" class="icon" alt="">
+                        <img src="comment.jpg" class="icon" alt="">
+                        <img src="send.jpg" class="icon" alt="">
+                        <img src="save.jpg" class="save icon" alt="">
+                    </div>
+                    <!-- <p class="likes">1,012 likes</p> -->
+                    <p class="description"><span>VIRAT KOHLI </span> A very talented and well established cricketer.Participated in many state and zonal cricket tournaments.
+                        Will love to play for the Indian Cricket Team in the future.Support me and wish me luck for my future endeavours.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum quo natus molestias?</p>
+                    
+                </div>
+                <div class="comment-wrapper">
+                    <img src="img/smile.PNG" class="icon" alt="">
+                    <input type="text" class="comment-box" placeholder="Add a comment">
+                    <button class="comment-btn">post</button>
+                </div>
+            </div>
+            <div class="post">
+                <div class="info">
+                    <div class="user">
+                        <!-- <div class="profile-pic"><img src="original.jpeg" alt=""></div> -->
+                        <p class="username">SANIKA GANGULY-MODEL</p>
+                    </div>
+                    <!-- <img src="img/option.PNG" class="options" alt=""> -->
+                </div>
+                <img src="original.jpeg" class="post-image" alt="">
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <img src="like.jpg" class="icon" alt="">
+                        <img src="comment.jpg" class="icon" alt="">
+                        <img src="send.jpg" class="icon" alt="">
+                        <img src="save.jpg" class="save icon" alt="">
+                    </div>
+                    
+                    <p class="description"><span>SANIKA GANGULY </span> I am looking forward in becoming a model in the future.Besides looking gorgeous I  carry my own style. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum quo natus molestias?</p>
+                    
+                </div>
+                <div class="comment-wrapper">
+                    <!-- <img src="img/smile.PNG" class="icon" alt=""> -->
+                    <input type="text" class="comment-box" placeholder="Add a comment">
+                    <button class="comment-btn">post</button>
+                </div>
+            </div>
+            <div class="post">
+                <div class="info">
+                    <div class="user">
+                        <!-- <div class="profile-pic"><img src="original.jpeg" alt=""></div> -->
+                        <p class="username">SUSHANT KUMAR-ACTOR</p>
+                    </div>
+                    <!-- <img src="img/option.PNG" class="options" alt=""> -->
+                </div>
+                <img src="actor.jpg" class="post-image" alt="">
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <img src="like.jpg" class="icon" alt="">
+                        <img src="comment.jpg" class="icon" alt="">
+                        <img src="send.jpg" class="icon" alt="">
+                        <img src="save.jpg" class="save icon" alt="">
+                    </div>
+                    
+                    <p class="description"><span>SUSHANT KUMAR </span> I am looking forward to become an actor in the future.Besides looking gorgeous I  carry my own style. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum quo natus molestias?</p>
+                    
+                </div>
+                <div class="comment-wrapper">
+                    <!-- <img src="img/smile.PNG" class="icon" alt=""> -->
+                    <input type="text" class="comment-box" placeholder="Add a comment">
+                    <button class="comment-btn">post</button>
+                </div>
+            </div>
+            <div class="post">
+                <div class="info">
+                    <div class="user">
+                        <!-- <div class="profile-pic"><img src="original.jpeg" alt=""></div> -->
+                        <p class="username">SURESH BHATTAHARYA-SINGER</p>
+                    </div>
+                    <!-- <img src="img/option.PNG" class="options" alt=""> -->
+                </div>
+                <img src="singer.jpg" class="post-image" alt="">
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <img src="like.jpg" class="icon" alt="">
+                        <img src="comment.jpg" class="icon" alt="">
+                        <img src="send.jpg" class="icon" alt="">
+                        <img src="save.jpg" class="save icon" alt="">
+                    </div>
+                    
+                    <p class="description"><span>SURESH BHATTACHARYA </span> I am looking forward in becoming a model in the future.Besides looking gorgeous I  carry my own style. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum quo natus molestias?</p>
+                    
+                </div>
+                <div class="comment-wrapper">
+                    <!-- <img src="img/smile.PNG" class="icon" alt=""> -->
+                    <input type="text" class="comment-box" placeholder="Add a comment">
+                    <button class="comment-btn">post</button>
+                </div>
+            </div>
+            <div class="post">
+                <div class="info">
+                    <div class="user">
+                        <!-- <div class="profile-pic"><img src="original.jpeg" alt=""></div> -->
+                        <p class="username">ROB WILLIAMS-ATHLETE</p>
+                    </div>
+                    <!-- <img src="img/option.PNG" class="options" alt=""> -->
+                </div>
+                <img src="athlete.jpg" class="post-image" alt="">
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <img src="like.jpg" class="icon" alt="">
+                        <img src="comment.jpg" class="icon" alt="">
+                        <img src="send.jpg" class="icon" alt="">
+                        <img src="save.jpg" class="save icon" alt="">
+                    </div>
+                    
+                    <p class="description"><span>ROB WILLIAMS </span> I am looking forward in becoming a model in the future.Besides looking gorgeous I  carry my own style. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum quo natus molestias?</p>
+                    
+                </div>
+                <div class="comment-wrapper">
+                    <!-- <img src="img/smile.PNG" class="icon" alt=""> -->
+                    <input type="text" class="comment-box" placeholder="Add a comment">
+                    <button class="comment-btn">post</button>
+                </div>
+            </div>
+            <div class="post">
+                <div class="info">
+                    <div class="user">
+                        <!-- <div class="profile-pic"><img src="original.jpeg" alt=""></div> -->
+                        <p class="username">JESSICA JONES-DANCER</p>
+                    </div>
+                    <!-- <img src="img/option.PNG" class="options" alt=""> -->
+                </div>
+                <img src="dancer.jpg" class="post-image" alt="">
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <img src="like.jpg" class="icon" alt="">
+                        <img src="comment.jpg" class="icon" alt="">
+                        <img src="send.jpg" class="icon" alt="">
+                        <img src="save.jpg" class="save icon" alt="">
+                    </div>
+                    
+                    <p class="description"><span>SANIKA GANGULY </span> I am looking forward in becoming a model in the future.Besides looking gorgeous I  carry my own style. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum quo natus molestias?</p>
+                    
+                </div>
+                <div class="comment-wrapper">
+                    <!-- <img src="img/smile.PNG" class="icon" alt=""> -->
+                    <input type="text" class="comment-box" placeholder="Add a comment">
+                    <button class="comment-btn">post</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+    
+    </body>
+</html>
